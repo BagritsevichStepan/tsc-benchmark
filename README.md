@@ -3,6 +3,7 @@ A low overhead nanosecond TSC benchmark which allows you to measure small sectio
 
 # Links
 + [RDTSC And RDTSCP Instructions](#rdtsc)
+  * [Hardware Support](#rdtsc_hardware)
 + [TSC Reordering](#reordering)
 + [TSC Overhead](#overhead)
 + [Run Benchmark](#benchmark)
@@ -20,7 +21,7 @@ The benchmark uses [`rdtsc`](https://www.felixcloutier.com/x86/rdtsc) instructio
 
 Also, the [`rdtscp`](https://www.felixcloutier.com/x86/rdtscp) instruction can be used to check that the programm did not switch to another cpu between tsc calls, which can significantly distort the measurements. To check cpu migration during the benchmarks please pass to the `TSCBenchmarking` template parameter `bool CheckCpuMigration` the true value.
 
-## Hardware Support
+## <a name="rdtsc_hardware"></a>Hardware Support
 The benchmark checks that your `/proc/cpuinfo` contains `nonstop_tsc`, `constant_tsc`. But in general, the TSC, on the all modern x86 systems, runs at constant rate and never stops across all P states.
 
 Also, the benchmark checks whether your system supports [Invariant TSC](https://docs.xilinx.com/r/en-US/ug1586-onload-user/Timer-TSC-Stability), which can significantly affect the accuracy of measurements.
