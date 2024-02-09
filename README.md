@@ -83,3 +83,8 @@ In the `benchmarking::TSCBenchmarking::Initialize` method, the benchmark prepare
 In addition, it makes several tests to calculate the overhead from tsc calls, which then needs to be subtracted from the final measured time.
 
 # <a name="benchmark"></a>Run Benchmark
+After initialization, you can run the benchmark using the `benchmarking::TSCBenchmarking::Run` method.
+ 
+This method sets the cpu on which the benchmark will be performed, warm up the benchmark and your code, makes several runs of your code and returns the average time.
+
+In addition, you can use a minimalistic method `benchmarking::TSCBenchmarking::MeasureTime` of the benchmark. Which does nothing except reading the tsc. This method can be used in the code hot path to take simple measurements first, and then to translate them in another process into a more readable format.
